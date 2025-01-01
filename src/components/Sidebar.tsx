@@ -7,7 +7,8 @@ import Link from "next/link";
 import { Avatar, AvatarImage } from "./ui/avatar";
 
 import { LinkIcon, MapPinIcon } from "lucide-react";
-import { Separator } from "./ui/seperator";
+import { Separator } from "./ui/separator";
+
 
 async function Sidebar() {
   const authUser = await currentUser();
@@ -15,6 +16,8 @@ async function Sidebar() {
 
   const user = await getUserByClerkId(authUser.id);
   if (!user) return null;
+
+  console.log(user);
 
   return (
     <div className="sticky top-20">
