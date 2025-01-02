@@ -16,9 +16,10 @@ import { useAuth, SignInButton, SignOutButton } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
-function MobileNavbarClient({ user }: { user: any }) {
+function MobileNavbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const { isSignedIn } = useAuth();
+  const { isSignedIn} = useAuth();
+  console.log(typeof(isSignedIn));
   const { theme, setTheme } = useTheme();
 
   return (
@@ -60,16 +61,12 @@ function MobileNavbarClient({ user }: { user: any }) {
                     Notifications
                   </Link>
                 </Button>
-                <Button variant="ghost" className="flex items-center gap-3 justify-start" asChild>
-                  <Link
-                    href={`/profile/${
-                      user ? user.username ?? user.emailAddresses[0].emailAddress.split("@")[0] : ""
-                    }`}
-                  >
+                {/* <Button variant="ghost" className="flex items-center gap-3 justify-start" asChild>
+                  <Link href="/profile">
                     <UserIcon className="w-4 h-4" />
                     Profile
                   </Link>
-                </Button>
+                </Button> */}
                 <SignOutButton>
                   <Button variant="ghost" className="flex items-center gap-3 justify-start w-full">
                     <LogOutIcon className="w-4 h-4" />
@@ -91,4 +88,4 @@ function MobileNavbarClient({ user }: { user: any }) {
   );
 }
 
-export default MobileNavbarClient;
+export default MobileNavbar;
