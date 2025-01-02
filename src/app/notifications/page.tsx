@@ -83,7 +83,7 @@ function NotificationsPage() {
                 >
                   <Link
                     href={`/profile/${
-                      notification.creator.name ?? notification.creator.username
+                      notification.creator.username
                     }`}
                   >
                     <Avatar className="mt-1">
