@@ -5,10 +5,8 @@ import { Button } from "./ui/button";
 import { getUserByClerkId } from "@/actions/user.action";
 import Link from "next/link";
 import { Avatar, AvatarImage } from "./ui/avatar";
-
-import { LinkIcon, MapPinIcon } from "lucide-react";
 import { Separator } from "./ui/separator";
-
+import { LinkIcon, MapPinIcon } from "lucide-react";
 
 async function Sidebar() {
   const authUser = await currentUser();
@@ -17,15 +15,13 @@ async function Sidebar() {
   const user = await getUserByClerkId(authUser.id);
   if (!user) return null;
 
-  console.log(user);
-
   return (
     <div className="sticky top-20">
       <Card>
         <CardContent className="pt-6">
           <div className="flex flex-col items-center text-center">
             <Link
-              href={`/profile/${user.username}`}
+              href={`/profile/${user.username || user.name}`}
               className="flex flex-col items-center justify-center"
             >
               <Avatar className="w-20 h-20 border-2 ">
